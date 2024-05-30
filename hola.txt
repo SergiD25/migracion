@@ -1,1 +1,83 @@
-no
+Create table TIENDAS (
+id_tienda int auto_increment primary key,
+nombre_tienda varchar(40),
+imagen,
+direccion_tienda varchar(60),
+telefono_tienda varchar(20),
+email_tienda varchar(40),
+tipo_tienda varchar(20)
+);
+
+Create table PRODUCTOS(
+    Id_producto int auto_increment primary key,
+    nombre_producto varchar(40),
+    descripcion varchar(100),
+    imagen varchar(100),
+    Existencias int,
+);
+
+
+×Articulo/s
+×Descripcion del producto
+×Existencias
+
+Create table USUARIOS(
+    id_usuario int auto_increment primary key,
+    nombre_usuario varchar(40),
+    correo_usuario varchar(50),
+    contraseña varchar(20),
+    tipo_usuario varchar(20)
+);
+×Permisos
+
+Create table MATERIALES(
+    id_material int auto_increment primary key,
+    nombre_material varchar(40),
+    descripcion varchar(100),
+    imagen varchar(100),
+    Existencias int,
+);
+
+×Descripcion del material
+×existencias del material
+
+Create table VENTAS(
+    id_venta int auto_increment primary key,
+    descripcion_venta varchar(40),
+    fecha date,
+    id_pedido int,
+    id_tienda,
+    tipo_de_pago varchar(40),
+    total float,
+    foreign key (id_pedido) references PEDIDOS(id_pedido),
+    foreign key (id_tienda) references TIENDAS(id_tienda)
+);
+
+×info de la venta
+×estado de la venta
+
+Create table PEDIDO(
+    id_pedido int auto_increment primary key,
+    articulos_varchar(30),
+    cantidad_productos int,
+    id_usuario int,
+    id_tienda int,
+    foreign key (id_usuario) references USUARIOS(id_usuario),
+    foreign key (id_tienda) references TIENDAS(id_tienda)
+    );
+×articulo/s
+×Creacion de pedidos
+×Personalizacion de productos
+×Valor de venta
+
+Create table CLIENTES(
+    id_cliente int auto_increment primary key,
+    nombre_cliente varchar(40),
+    correo_cliente varchar(50),
+    telefono_cliente varchar(20),
+    direccion_cliente varchar(50),
+    historial_compras varchar(60)
+    );
+×Registro de clientes
+×Historial de cada cliente
+

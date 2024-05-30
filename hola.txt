@@ -26,7 +26,8 @@ Create table USUARIOS(
     nombre_usuario varchar(40),
     correo_usuario varchar(50),
     contraseña varchar(20),
-    tipo_usuario varchar(20)
+    rol varchar(20),
+    estado varchar(20)
 );
 ×Permisos
 
@@ -49,6 +50,7 @@ Create table VENTAS(
     id_tienda,
     tipo_de_pago varchar(40),
     total float,
+    entrega varchar(20)
     foreign key (id_pedido) references PEDIDOS(id_pedido),
     foreign key (id_tienda) references TIENDAS(id_tienda)
 );
@@ -62,9 +64,17 @@ Create table PEDIDO(
     cantidad_productos int,
     id_usuario int,
     id_tienda int,
+    estado varchar(20),
+    entrega varchar(20),
+    produccion varchar(20)//nota en esto es para colocar el proceso en el cual esta el zapato ya sea corte, guarnicion, soladuria etc,
     foreign key (id_usuario) references USUARIOS(id_usuario),
     foreign key (id_tienda) references TIENDAS(id_tienda)
     );
+
+CREATE TABLE PERSONALIZACION(
+    id_personalizacion 
+)
+
 ×articulo/s
 ×Creacion de pedidos
 ×Personalizacion de productos
@@ -80,4 +90,40 @@ Create table CLIENTES(
     );
 ×Registro de clientes
 ×Historial de cada cliente
+
+
+
+x Tabla de los proveedores
+CREATE TABLE PROVEEDORES(
+    nit int,
+    nombre varchar(20),
+    contacto int,
+    correo varchar(20),
+    direccion varchar(20)
+)
+
+
+ABASTECIMIENTOS: 
+×Historial de abastecimientos
+×Crear solicitud de abastecimiento
+// tabla para pedir materia prima para la prodccion
+CREATE TABLE ABASTECIMIENTO(
+     id_pedido int,
+     tipo_de_material varchar(20),
+     estado_de_entrega vachar(20),
+     fecha_de_solicitud date
+)
+
+
+NOMINA(pago de empleados).
+×Clasificar por cargo
+×Empleados 
+×Pagos empleados
+
+CREATE TABLE NOMINA(
+      id_empleado int,
+      nombre varchar(20)
+      cantidad_de_pares int,
+
+)
 
